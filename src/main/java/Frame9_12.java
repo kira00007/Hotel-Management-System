@@ -1,3 +1,8 @@
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -174,13 +179,20 @@ public class Frame9_12 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int value1 = Integer.parseInt(t1.getText());
+        String value2 = t2.getText();
+        String value3 = t3.getText();
+        String value4 = t4.getText();
+        int value5 = Integer.parseInt(t5.getText());
+        int value6 = Integer.parseInt(t6.getText());
+        
         try
         {
-            Class.forName("java.sql.DriverManager");
+            Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/asad", "root", "root");
             Statement stmt = conn.createStatement();
-            String insert = "";
-            stmt.executeQuery(insert);
+            String insert = "update doctor set dname='"+value2+"', sex='"+value3+"', qualification='"+value4+"', phoneno='"+value5+"', age='"+value6+"' where d_id='"+value1+"'";
+            stmt.executeUpdate(insert);
         }
         catch(SQLException e)
         {

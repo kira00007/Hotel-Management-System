@@ -126,12 +126,14 @@ public class Frame8 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int value1 = Integer.parseInt(t1.getText());
+        
         try
         {
-            Class.forName("java.sql.DriverManager");
+            Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/asad", "root", "root");
             Statement stmt = conn.createStatement();
-            String insert = "";
+            String insert = "delete from patient where p_id='"+value1+"'";
             stmt.executeQuery(insert);
         }
         catch(SQLException e)

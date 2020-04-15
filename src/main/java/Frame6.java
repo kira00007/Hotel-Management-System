@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author Asad Khan
  */
 public class Frame6 extends javax.swing.JFrame {
-
+   
     /**
      * Creates new form Frame6
      */
@@ -203,11 +203,22 @@ public class Frame6 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
-            Class.forName("java.sql.DriverManager");
+            Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/asad", "root", "root");
-            Statement stmt = conn.createStatement();
-            String insert = "";
-            stmt.executeQuery(insert);
+            
+            String sql = "insert into patient values (?,?,?,?,?,?,?,?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, Integer.parseInt(t1.getText()));
+            pstmt.setString(2, t2.getText());
+            pstmt.setString(3, t3.getText());
+            pstmt.setInt(4, Integer.parseInt(t4.getText()));
+            pstmt.setString(5, t5.getText());
+            pstmt.setInt(6, Integer.parseInt(t6.getText()));
+            pstmt.setString(7, t7.getText());
+            pstmt.setString(8, t8.getText());
+            
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Patient Added successfully");
         }
         catch(SQLException e)
         {

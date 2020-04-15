@@ -205,13 +205,22 @@ public class Frame7 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int value1 = Integer.parseInt(t1.getText());
+        String value2 = t2.getText();
+        String value3 = t3.getText();
+        int value4 = Integer.parseInt(t4.getText());
+        String value5 = t5.getText();
+        int value6 = Integer.parseInt(t6.getText());
+        String value7 = t7.getText();
+        String value8 = t8.getText();
+        
         try
         {
-            Class.forName("java.sql.DriverManager");
+            Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/asad", "root", "root");
             Statement stmt = conn.createStatement();
-            String insert = "";
-            stmt.executeQuery(insert);
+            String insert = "update patient set pname='"+value2+"', sex='"+value3+"', age='"+value4+"', dob='"+value5+"', phoneno='"+value6+"', dateadmit='"+value7+"', datedischarge='"+value8+"' where p_id='"+value1+"'";
+            stmt.executeUpdate(insert);
         }
         catch(SQLException e)
         {

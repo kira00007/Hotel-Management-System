@@ -138,7 +138,7 @@ public class Frame1 extends javax.swing.JFrame {
         String password = p1.getText();
         try
         {
-            if(username.equals("asad") && password.equals("khan"))
+            if(username.equals("hospital") && password.equals("management"))
             {
                 Frame2 frame2 = new Frame2();
                 frame2.setVisible(true);
